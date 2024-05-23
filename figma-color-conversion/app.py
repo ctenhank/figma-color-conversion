@@ -31,12 +31,14 @@ with open(args.file, "r") as f:
             if "resolvedValue" in rgb:
                 rgb = rgb["resolvedValue"]
 
-            r = hex(int(rgb["r"] * 255)).replace("0x", "").upper()
-            g = hex(int(rgb["g"] * 255)).replace("0x", "").upper()
-            b = hex(int(rgb["b"] * 255)).replace("0x", "").upper()
-            a = hex(int(rgb["a"] * 255)).replace("0x", "").upper()
+            r = hex(int(rgb["r"] * 255)).replace("0x", "").zfill(2).upper()
+            g = hex(int(rgb["g"] * 255)).replace("0x", "").zfill(2).upper()
+            b = hex(int(rgb["b"] * 255)).replace("0x", "").zfill(2).upper()
+            a = hex(int(rgb["a"] * 255)).replace("0x", "").zfill(2).upper()
 
             name: str = var["name"]
+
+            print(name, a, r, g, b)
 
             print(
                 color_to_dart(name, r, g, b, a),
