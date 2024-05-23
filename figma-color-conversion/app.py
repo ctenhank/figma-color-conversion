@@ -11,7 +11,7 @@ args = parser.parse_args()
 
 
 def color_to_dart(name, r, g, b, a):
-    return (f"const {name} = Color(0x{a}{r}{g}{b});",)
+    return f"const {name} = Color(0x{a}{r}{g}{b});"
 
 
 with open(args.file, "r") as f:
