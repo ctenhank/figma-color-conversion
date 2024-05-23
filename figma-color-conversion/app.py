@@ -10,7 +10,11 @@ parser.add_argument(
 args = parser.parse_args()
 
 
-def color_to_dart(name, r, g, b, a):
+def color_to_dart(name: str, r, g, b, a):
+    name = name.replace(" ", "")
+    name = name.replace("-", "")
+    name = name.replace("/", "")
+    name = name[0:1].lower() + name[1:]
     return f"const {name} = Color(0x{a}{r}{g}{b});"
 
 
@@ -33,9 +37,6 @@ with open(args.file, "r") as f:
             a = hex(int(rgb["a"] * 255)).replace("0x", "").upper()
 
             name: str = var["name"]
-            name = name.replace(" ", "")
-            name = name.replace("-", "")
-            name = name.replace("/", "")
 
             print(
                 color_to_dart(name, r, g, b, a),
